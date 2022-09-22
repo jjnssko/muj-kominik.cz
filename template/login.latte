@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style/dist/login.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
+    <title>Kominictví Verner - Login</title>
+</head>
+
+<body>
+
+    {include '../template/navbar.latte'}
+
+
+    <div class="login">
+        <div class="loginText">
+            <h1>Kominictví Verner - Login</h1>
+        </div>
+
+        <div class="form">
+            <form action="login.php" method="POST">
+                <label for="username">Uživatelské jméno</label><br>
+                <input type="text" name="username" id="username" value="{$username}"><br>
+                <label for="password">Heslo</label><br>
+                <input type="password" name="password" id="password" value=""><br>
+                <button class="button">Přihlásit se</button>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

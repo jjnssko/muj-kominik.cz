@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <link rel="stylesheet" href="style/dist/style.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
+  <title>Kominictví Verner</title>
+  <!-- <script src="js_src/functions.js" async></script> -->
+  <script>
+  jQuery(document).ready(function () {
+    jQuery('#datepicker').datepicker({
+      format: 'dd-mm-yyyy',
+      startDate: '+1d'
+    });
+  });
+  </script>
+</head>
+<body>
+  <div id="Uvod" class="header">
+    <video id="myVideo" width="100%" height="10%" style="display:block;" autoplay muted loop><source src="{$foto["0"]}" type="video/mp4" alt="video of smoke"></video>
+      <div class="nadpis">
+        <h1>Kominictví Verner</h1>
+        <p>Vaše krušnohorské kominictví</p>
+        <p>{$kontakt["0"]["3"]}</p>
+      </div>
+    </div>
+    {include 'navbar.latte'}
+    <section class="one">
+      <div id="Sluzby" class="containers" style="cursor: pointer;">
+
+        <a href="src/cisteni.php" class="cisteni">
+          <div>
+            <h2>{$sluzba[0][0]}</h2>
+            <p>{$sluzba[0][1]}</p>
+          </div>
+        </a>
+
+        <a href="src/sanace.php" class="sanace">
+          <div>
+            <h2>{$sluzba[1][0]}</h2>
+            <p>{$sluzba[1][1]}</p>
+          </div>
+        </a>
+
+        <a href="src/vystavba.php" class="vystavba">
+          <div>
+            <h2>{$sluzba[2][0]}</h2>
+            <p>{$sluzba[2][1]}</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+{*
+*}
+<section class="two">
+
+	<div class="calendarText">
+		<h2>Poptejte kominické služby na termín, který Vám vyhovuje</h2>
+	</div>
+	<div class="container-form">
+		<h2>Online rezervace</h2>
+		<form id="rezervace" class="formular" method="POST">
+
+			<div class="form-field">
+				<input type="text" id="JmenoPrijmeni" placeholder="Celé Jméno" name="JmenoPrijmeni">
+			</div>
+			<div class="form-field">
+				<input type="email" id="emailRezervace" placeholder="Email" name="email">
+			</div>
+			<div class="form-field">
+				<input placeholder="Vyberte datum" type="text" name="checkIn" id="datepicker" class="calendar-datepicker"><i class="fas fa-calendar-check icon"></i>
+			</div>
+			<button type="submit" class="button-rezervace" name="rezervovat" id="rezervaceButton">Odeslat</button>
+			<span style="color:#fbd074fa;text-align:center;font-weight:bold;font-size:140%;" id="rezervaceMsg"></span>
+		</form>
+	</div>
+
+	<script>
+		jQuery('#rezervace').on('submit',function(e){
+			jQuery('#rezervaceMsg').html('');
+			jQuery('#rezervaceButton').html('Rezervace se odesílá');
+			jQuery('#rezervaceButton').attr('disabled',true);
+			jQuery.ajax({
+				url:'src/rezervace.php',
+				type:'POST',
+				data:jQuery('#rezervace').serialize(),
+				success:function(result){
+					setTimeout(function(){
+						jQuery('#rezervaceMsg').html(result);
+						jQuery('#rezervaceButton').html('Rezervace byla odeslána');
+						jQuery('#rezervaceButton').css({ 'color': '#fbd074fa', 'background-color': '#1F1F1F', 'font-weight':'bold'});
+						jQuery('#rezervace')[0].reset();
+					}, 650);
+				}
+			});
+			e.preventDefault();
+		});
+	</script>
+
+</section>
+
+  <section class="four">
+
+    <div id="Omne" class="aboutMe">
+      <img src="{$omne["0"]["2"]}" alt="chimney-sweeper on a roof" width="10%" height="10%">
+
+      <div class="aboutText">
+        <h3>O mně</h3>
+        <span hidden>Kominictví Verner</span>
+        <p>{$omne["0"]["0"]}<p>
+          <p>{$omne["0"]["1"]}</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="five">
+
+      <div id="Fotogalerie" class="gallery">
+
+        <input type="checkbox" id="pic-1">
+        <label for="pic-1" class="lightbox"><img src="{$foto["1"]}"></label>
+        <input type="checkbox" id="pic-2">
+        <label for="pic-2" class="lightbox"><img src="{$foto["2"]}"></label>
+        <input type="checkbox" id="pic-3">
+        <label for="pic-3" class="lightbox"><img src="{$foto["3"]}"></label>
+        <input type="checkbox" id="pic-4">
+        <label for="pic-4" class="lightbox"><img src="{$foto["4"]}"></label>
+        <input type="checkbox" id="pic-5">
+        <label for="pic-5" class="lightbox"><img src="{$foto["5"]}"></label>
+        <input type="checkbox" id="pic-6">
+        <label for="pic-6" class="lightbox"><img src="{$foto["6"]}"></label>
+        <input type="checkbox" id="pic-7">
+        <label for="pic-7" class="lightbox"><img src="{$foto["6"]}"></label>
+        <input type="checkbox" id="pic-8">
+        <label for="pic-8" class="lightbox"><img src="{$foto["6"]}"></label>
+
+        <div class="grid">
+          <label for="pic-1" class="grid-item"><img src="{$foto["1"]}"></label>
+          <label for="pic-2" class="grid-item"><img src="{$foto["2"]}"></label>
+          <label for="pic-3" class="grid-item"><img src="{$foto["3"]}"></label>
+          <label for="pic-4" class="grid-item"><img src="{$foto["4"]}"></label>
+          <label for="pic-5" class="grid-item"><img src="{$foto["5"]}"></label>
+          <label for="pic-6" class="grid-item"><img src="{$foto["6"]}"></label>
+          <label for="pic-7" class="grid-item"><img src="{$foto["6"]}"></label>
+          <label for="pic-8" class="grid-item"><img src="{$foto["6"]}"></label>
+
+        </div>
+
+      </section>
+
+      {include 'footer.latte'}
+
+    </body>
+    </html>

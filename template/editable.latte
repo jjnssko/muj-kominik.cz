@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="cs" dir="ltr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="../style/dist/clanky.css">
+  <script src="../js_src/functions.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
+  <script src="https://cdn.tiny.cloud/1/qh10rgarbegu8afz316lty9q9d3vot8mwrlatkg0gy1agg4f/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+  <script>
+  tinymce.init({
+    selector: '#editor'
+  });
+  </script>
+  <title>Kominictví Verner - Úprava článku</title>
+</head>
+
+<body>
+  {include 'navbar-admin.latte'}
+
+  <div class="form">
+    <h1>Začít upravovat</h1>
+    <h2 hidden>{$kategorie} - {$id}</h2>
+    <form action="successUprava.php" method="post" enctype="multipart/form-data">
+      <input type="hidden" name="articleID" value="{$id}">
+      <input type="hidden" name="kategorie" value="{$kategorie}">
+      <label for="articleName">Název článku:</label><br>
+      <textarea name="nadpis" rows="8" cols="80">{$radek[0][0]}</textarea><br>
+      <label for="articleContent">Obsah článku:</label><br>
+      <textarea id="editor" name="popis" rows="8" cols="80">{$radek[0][1]}</textarea>
+      <label for="articlePic">Foto článku:</label><br>
+      <div>
+        <img src="../img/{$radek[0][2]}">
+      </div>
+      <input type="file" id="img" name="img"><br>
+
+      <button class="button" type="submit" name="upravit">Upravit Článek</button>
+    </form>
+  </div>
+
+  <!-- <div class="vypis">
+  <p>{$statusMsg}</p>
+</div> -->
+</body>
+
+</html>

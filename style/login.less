@@ -1,0 +1,154 @@
+@rightMargin: 16px;
+@leftMargin: 16px;
+@fontSize: 20px;
+@marginTop: 50px;
+@border: 3px solid #fbd074fa;
+
+@mobile:  ~"(max-width: 767px)";
+@desktop: ~"(max-width: 1920px)";
+
+body{
+  color: white;
+  background-color:#1F1F1F;
+  margin:0px;
+  font-family: 'Exo 2', sans-serif;
+  margin:0;
+}
+
+  /* Styl nav */
+.navbar {
+  display: flex;
+  position: relative;
+  background-color: rgba(0, 0, 0, 0.301);
+  color: white;
+  text-align: center;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+  justify-content: center;
+  font-size: @fontSize;
+}
+
+
+.navbar-links {
+  height: 100%;
+}
+
+.navbar-links ul {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  li {
+      list-style: none;
+      a {
+          display: block;
+          text-decoration: none;
+          color: white;
+          padding: 1rem;
+          text-align:center;
+      }
+  }
+}
+
+.navbar-links li:hover {
+  background-color: #f8d17bbe;
+}
+
+/* Styl navbar button */
+.toggle-button {
+  position: absolute;
+  top: .75rem;
+  right: 1rem;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  .bar {
+      height: 3px;
+      width: 100%;
+      background-color: white;
+      border-radius: 10px;
+  }
+}
+
+.login{
+    text-align: center;
+    margin-top: 100px;
+
+    .loginText{
+        p{
+            font-size: 20px;
+        }
+    }
+
+    .form{
+        margin-top: 30px;
+        font-size: 20px;
+    }
+
+    input{
+        margin-top: 10px;
+        margin-bottom: 10px;
+        height: 24px;
+        width: 200px;
+    }
+    
+}
+
+.button {
+    background-color: white; 
+    color: black; 
+    border: 2px solid;
+    padding: 16px 32px;
+    text-align: center;
+    display: inline-block;
+    font-size: 16px; 
+    transition-duration: 0.4s;
+    cursor: pointer;
+    margin-top: 10px;
+  }
+  
+  .button:hover {
+    background-color: #fbd074fa;
+    color: white;
+  }
+
+  /* media mobile*/
+  @media @mobile {
+
+    /* Styl nav */
+    .navbar {
+      flex-direction: column;
+      align-items: flex-start;
+      font-size: 15px;
+  }
+
+  .toggle-button {
+      display: flex;
+  }
+
+  .navbar-links {
+      display: none;
+      width: 100%;
+  }
+
+  .navbar-links ul {
+      width: 100%;
+      flex-direction: column;
+  }
+
+  .navbar-links ul li {
+      text-align: center;
+  }
+
+  .navbar-links ul li a {
+      padding: .5rem 1rem;
+  }
+
+  .navbar-links.active {
+      display: flex;
+      background-color: #333333d2;
+  }
+}

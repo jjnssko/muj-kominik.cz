@@ -1,0 +1,84 @@
+<section class="six">
+
+  <div id="Kontakty">
+
+    <div class="formText">
+      <h4>Máte dotaz nebo chcete, abych se Vám ozval? Zanechte mi tady Váš kontakt</h4>
+    </div>
+    <div class="contact">
+      <div class="contactText">
+        <p>{$kontakt["0"]["0"]}</p>
+        <p>{$kontakt["0"]["1"]}</p>
+        <p>{$kontakt["0"]["2"]}</p>
+        <p>Tel: {$kontakt["0"]["3"]}</p>
+        <p>E-mail: {$kontakt["0"]["4"]}</p>
+        <p>IČ: {$kontakt["0"]["5"]}</p>
+      </div>
+
+      <div class="contactForm">
+
+        <form method="POST" action="../src/napistenam.php" id="contactForm">
+          <input hidden name="odkaz" value="{$location}">
+          <input type="text" name="name" id="name" size="30" placeholder="Jméno a příjmení" required><br>
+          <input type="tel" name="phone" id="phone" size="30" placeholder="Tel. číslo" required><br>
+          <input type="email" name="email" id="email" size="30" placeholder="E-mail" required><br>
+          <textarea name="note" name="note" id="note" rows="5" cols="35" placeholder="Poznámka"></textarea><br>
+          <input type="number" name="verify" id="verify" placeholder="2+2=" required><br>
+          <div class="button">
+            <button class="button" type="submit" id="contactFormButton" name="contactFormSubmit">Odeslat</button>
+          </div>
+          <span style="color:#fbd074fa;text-align:center;font-weight:bold;font-size:140%;" id="contactMsg"></span>
+        </form>
+      </div>
+
+      <script>
+      jQuery('#contactForm').on('submit',function(e){
+         jQuery('#contactMsg').html('');
+        jQuery('#contactFormButton').html('Dotaz se odesílá');
+        jQuery('#contactFormButton').attr('disabled',true);
+        jQuery.ajax({
+          url:'../src/napistenam.php',
+          type:'POST',
+          data:jQuery('#contactForm').serialize(),
+          success:function(result){
+            setTimeout(function(){
+              jQuery('#contactFormButton').html('Dotaz byl odeslán');
+              jQuery('#contactFormButton').css({ 'color': 'white', 'background-color': '#fbd074fa', 'font-weight':'bold'});
+              jQuery('#contactForm')[0].reset();
+            }, 650);
+          }
+        });
+        e.preventDefault();
+      });
+      </script>
+
+    </div>
+  </div>
+
+  <div class="map">
+    <iframe
+    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2542.6326989675686!2d12.919302015624998!3d50.41068247946992!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a0a4fba5241b87%3A0x54f5a57abeb57e8a!2zQm_FvsOtIERhciAxMzQsIDM2MyAwMSBCb8W-w60gRGFy!5e0!3m2!1scs!2scz!4v1612799908604!5m2!1scs!2scz"
+    width="100%" height="350vh" frameborder="0" style="border:0; display:block;" allowfullscreen="" aria-hidden="false"
+    tabindex="0"></iframe>
+  </div>
+
+</section>
+
+
+<footer>
+  <div class="copyright">
+    <p>Kominictví Verner 2021 - Všechna práva vyhrazena</p>
+  </div>
+  <div class="admin">
+    <a href="../src/login.php">Admin</a>
+  </div>
+</footer>
+
+<script>
+const toggleButton = document.getElementsByClassName('toggle-button')[0]
+const navbarLinks = document.getElementsByClassName('navbar-links')[0]
+
+toggleButton.addEventListener('click', () => {
+  navbarLinks.classList.toggle('active')
+})
+</script>

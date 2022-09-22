@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="../style/dist/sluzby.css">
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
+  <title>Kominictví Verner - Sanace</title>
+</head>
+
+<body>
+
+  {include 'navbar.latte'}
+
+  <div class="nadpis">
+    <h1>Sanace komínu</h1>
+  </div>
+
+  {for $i = 0; $i < $pocetSanace; $i++}
+  {if $idSanace % 2 == 0}
+
+  <section class="left">
+    <div class="container1">
+
+      <div class="img1">
+        <img src="../img/{$sanace["$i"]["2"]}" alt="sanace1">
+      </div>
+
+      <div class="aboutText">
+        <h3>{$sanace["$i"]["0"]|stripHtml}</h3>
+        <p id="justify">{$sanace["$i"]["1"]|stripHtml}</p>
+      </div>
+    </div>
+
+  </section>
+
+  {do $idSanace++}
+  {else}
+
+  <section class="right">
+
+    <div class="container2">
+
+      <div class="aboutText2">
+        <h3>{$sanace["$i"]["0"]|stripHtml}</h3>
+        <p id="justify">{$sanace["$i"]["1"]|stripHtml}</p>
+      </div>
+
+      <div class="img2">
+        <img src="../img/{$sanace["$i"]["2"]}" alt="sanace2">
+      </div>
+
+    </div>
+
+  </section>
+
+  {do $idSanace++}
+  {/if}
+
+  {/for}
+
+  {include 'footer.latte'}
+
+  </body>
+  </html>

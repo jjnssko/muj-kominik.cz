@@ -1,0 +1,7 @@
+{
+    "require": {
+        "latte/latte": "^2.10",
+        "vlucas/phpdotenv": "^5.3",
+        "phpmailer/phpmailer": "^6.5"
+    }
+}

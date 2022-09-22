@@ -1,0 +1,8 @@
+RewriteEngine On
+RewriteBase /
+
+RewriteCond %{ENV:HTTPS} !^.*on
+RewriteRule ^(.*)$ https://www.muj-kominik.cz/$1 [R,L]
+RewriteRule ^sluzby/cisteni?$ /src/cisteni.php [L]
+RewriteRule ^sluzby/sanace?$ /src/sanace.php [L]
+RewriteRule ^sluzby/vystavba?$ /src/vystavba.php [L]

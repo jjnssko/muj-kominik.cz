@@ -1,0 +1,7 @@
+/vendor
+.env
+txt/
+temp/
+src/login/.env
+private/
+src/login/private

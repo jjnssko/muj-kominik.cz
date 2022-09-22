@@ -1,0 +1,28 @@
+@import "clanky.css";
+@rightMargin: 16px;
+@leftMargin: 16px;
+@fontSize: 20px;
+@marginTop: 50px;
+@border: 3px solid #fbd074fa;
+
+#reservations {
+    border-collapse:collapse;
+    width: 100%;
+    text-align:center;
+    margin-top: @marginTop;
+  }
+  
+  #reservations td, #reservations th {
+    border: 0.5px solid #ddd;
+    padding: 8px;
+  }
+  
+  #reservations tr:nth-child(even){background-color: #333333;}
+  
+  #reservations th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    background-color: #fbd074b0;
+  }
+
+  #reservations tr:hover:not(#nadpisy) {background-color: rgba(255, 255, 255, 0.39);}

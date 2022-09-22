@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="../style/dist/seznamRezervaci.css">
+  <script src="../js_src/functions.js"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@300&display=swap" rel="stylesheet">
+  <title>Kominictví Verner - Seznam rezervací</title>
+</head>
+<body>
+  {include 'navbar-admin.latte'}
+  <h1>Seznam zapsaných rezervací v databázi</h1>
+  <table id="reservations">
+    <tr id="nadpisy">
+      <th>Jméno a Přijmení</th>
+      <th>E-mail</th>
+      <th>Datum Rezervace</th>
+      <th>Datum Vytvoření Rezervace</th>
+    </tr>
+    {foreach $rezervace as $item}
+      <tr>
+        <td>{$item[1]}</td>
+        <td>{$item[2]}</td>
+        <td>{$item[3][0]} - {$item[3][2]} - {$item[3][1]}</td>
+        <td>{$item[4]}</td>
+      </tr>
+    {/foreach}
+  </table>
+
+</body>
+</html>
